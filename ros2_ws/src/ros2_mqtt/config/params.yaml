@@ -1,0 +1,12 @@
+/relay_ros2_mqtt:
+  ros__parameters:
+    ~broker_ip_address: 192.168.15.115
+    ~twist_sub_topic: /joy
+    ~mqtt_pub_topic: esp32/cmd_vel
+/teleop_twist_joy_node:
+  ros__parameters:
+    axis_linear.x: 1
+    axis_angular.yaw: 0
+    scale_angular.yaw: 2.0
+    enable_button: 0
+    require_enable_button: False
