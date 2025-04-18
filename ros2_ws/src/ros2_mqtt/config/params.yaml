@@ -1,6 +1,6 @@
 /relay_ros2_mqtt:
   ros__parameters:
-    ~broker_ip_address: 192.168.15.115
+    ~broker_ip_address: 10.42.0.1
     ~twist_sub_topic: /joy
     ~mqtt_pub_topic: esp32/cmd_vel
 /teleop_twist_joy_node:

@@ -1,0 +1,29 @@
+[0.837s] Invoking command in '/home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt': PYTHONPATH=/home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/build --no-deps symlink_data
+[0.993s] /home/llagoeiro/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:261: UserWarning: Unknown distribution option: 'tests_require'
+[0.993s]   warnings.warn(msg)
+[1.260s] running develop
+[1.705s] running egg_info
+[1.706s] creating ros2_mqtt.egg-info
+[1.723s] writing ros2_mqtt.egg-info/PKG-INFO
+[1.723s] writing dependency_links to ros2_mqtt.egg-info/dependency_links.txt
+[1.723s] writing entry points to ros2_mqtt.egg-info/entry_points.txt
+[1.723s] writing requirements to ros2_mqtt.egg-info/requires.txt
+[1.723s] writing top-level names to ros2_mqtt.egg-info/top_level.txt
+[1.724s] writing manifest file 'ros2_mqtt.egg-info/SOURCES.txt'
+[1.760s] reading manifest file 'ros2_mqtt.egg-info/SOURCES.txt'
+[1.761s] writing manifest file 'ros2_mqtt.egg-info/SOURCES.txt'
+[1.783s] running build_ext
+[1.783s] Creating /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/lib/python3.10/site-packages/ros2-mqtt.egg-link (link to .)
+[1.784s] Installing relay_ros2_mqtt script to /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/lib/ros2_mqtt
+[1.785s] 
+[1.785s] Installed /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt
+[1.785s] running symlink_data
+[1.785s] creating /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/share/ament_index/resource_index/packages
+[1.786s] symbolically linking /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/resource/ros2_mqtt -> /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/share/ament_index/resource_index/packages
+[1.786s] symbolically linking /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/package.xml -> /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/share/ros2_mqtt
+[1.786s] creating /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/share/ros2_mqtt/launch
+[1.787s] symbolically linking /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/launch/ros2_mqtt.launch.py -> /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/share/ros2_mqtt/launch
+[1.787s] symbolically linking /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/launch/teleop_twist.launch.py -> /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/share/ros2_mqtt/launch
+[1.787s] creating /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/share/ros2_mqtt/config
+[1.787s] symbolically linking /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/config/params.yaml -> /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/share/ros2_mqtt/config
+[1.828s] Invoked command in '/home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt' returned '0': PYTHONPATH=/home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/install/ros2_mqtt/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/llagoeiro/Desktop/FEI/9_semestre/ELD050-SISTEMAS EMBARCADOS/projeto/ros2_ws/build/ros2_mqtt/build --no-deps symlink_data

@@ -47,12 +47,16 @@ class RelayRos2Mqtt(Node):
             self.joy_callback,
             qos_profile=qos_profile_system_default)
         
-        # Timer que envia a cada 0.5s (2 Hz)
-        self.timer = self.create_timer(0.5, self.publish_to_mqtt)
+        # Timer que envia a cada 0.1s (2 Hz)
+        self.timer = self.create_timer(0.1, self.publish_to_mqtt)
         
 
     def joy_callback(self, tmsg):
         self.latest_joy_msg = tmsg  # só salva a última
+
+
+    def remap(self,value, in_min, in_max, out_min, out_max):
+        return int((value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min)
         
         
     # def publish_to_mqtt(self, tmsg):
@@ -68,13 +72,15 @@ class RelayRos2Mqtt(Node):
             return
 
         tmsg = self.latest_joy_msg
-        print("Will publish")
-        if tmsg.buttons[9] != 0 or tmsg.axes[5] < 0.9 or tmsg.axes[0] != 0:
-            # Dictionary ={'x':str(tmsg.linear.x), 'z':str(tmsg.angular.z)}
-            Dictionary ={'start': tmsg.buttons[9], 'robot_vel': round(tmsg.axes[5], 2), 'robot_yaw': round(tmsg.axes[0], 2)}
-            self.get_logger().info('dict:: {0}'.format(json.dumps(Dictionary).encode()))
-            
-            self.mqttclient.publish(self.MQTT_PUB_TOPIC,json.dumps(Dictionary).encode(),qos=0, retain=False)
+        # print("Will publish")
+        # if tmsg.buttons[9] != 0 or tmsg.axes[5] < 0.9 or tmsg.axes[0] != 0:
+        # Dictionary ={'x':str(tmsg.linear.x), 'z':str(tmsg.angular.z)}
+        tmsg.axes[0] = self.remap(tmsg.axes[0], 1, -1, -1023, 1023)
+        tmsg.axes[5] = self.remap(tmsg.axes[5], 1, -1, 0, 1023)
+        Dictionary ={'start': tmsg.buttons[9],'stop' : tmsg.buttons[8] , 'robot_vel': int(tmsg.axes[5]), 'robot_yaw': int(tmsg.axes[0])}
+        self.get_logger().info('dict:: {0}'.format(json.dumps(Dictionary).encode()))
+        
+        self.mqttclient.publish(self.MQTT_PUB_TOPIC,json.dumps(Dictionary).encode(),qos=0, retain=False)
 
 def main(args=None):
     
