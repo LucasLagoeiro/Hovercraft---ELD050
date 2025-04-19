@@ -1,24 +1,11 @@
 #!/usr/bin/env python3
 
 import rclpy
-from rclpy.time import Time
-
-from time import sleep
-import sys
-import threading
-import numpy as np
-import os
-import paho.mqtt.client as mqtt
 from rclpy.node import Node
 from rclpy.qos import qos_profile_system_default
-from rclpy.qos import qos_profile_services_default
-
-from geometry_msgs.msg import TransformStamped
-from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Joy
-#from geometry_msgs.msg import Point, Pose, Quaternion, Vector3
-from std_msgs.msg import Int32, Float32
 
+import paho.mqtt.client as mqtt
 import json
 
 class RelayRos2Mqtt(Node):
@@ -59,22 +46,12 @@ class RelayRos2Mqtt(Node):
         return int((value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min)
         
         
-    # def publish_to_mqtt(self, tmsg):
-    #     if tmsg.linear.x != 0 or tmsg.angular.z:
-    #         Dictionary ={'x':str(tmsg.linear.x), 'z':str(tmsg.angular.z)}
-    #         self.get_logger().info('dict:: {0}'.format(json.dumps(Dictionary).encode()))
-            
-    #         self.mqttclient.publish(self.MQTT_PUB_TOPIC,json.dumps(Dictionary).encode(),qos=0, retain=False)
-
 
     def publish_to_mqtt(self):
         if self.latest_joy_msg is None:
             return
 
         tmsg = self.latest_joy_msg
-        # print("Will publish")
-        # if tmsg.buttons[9] != 0 or tmsg.axes[5] < 0.9 or tmsg.axes[0] != 0:
-        # Dictionary ={'x':str(tmsg.linear.x), 'z':str(tmsg.angular.z)}
         tmsg.axes[0] = self.remap(tmsg.axes[0], 1, -1, -1023, 1023)
         tmsg.axes[5] = self.remap(tmsg.axes[5], 1, -1, 0, 1023)
         Dictionary ={'start': tmsg.buttons[9],'stop' : tmsg.buttons[8] , 'robot_vel': int(tmsg.axes[5]), 'robot_yaw': int(tmsg.axes[0])}

@@ -13,7 +13,6 @@
 from machine import Pin, PWM
 import network
 import time
-from time import sleep
 from umqtt.robust import MQTTClient # necessaria para a comunicacao com o servidor MQTT
 import sys
 import json
@@ -36,24 +35,6 @@ MQTT_IO_URL = '10.42.0.1'
 # Caso o servidor MQTT exija usuario e senha
 # MQTT_USERNAME   = 'usuario'
 # MQTT_IO_KEY     = 'senha'
-
-
-#===============================================================
-# Leds, botao e variaveis
-#===============================================================
-
-# Pinos a utilizar para os LEDs com o ESP32
-# robot = Motor(19,18,21)
-# g = PWM(Pin(18), freq=20000, duty = 0)
-# r = PWM(Pin(19), freq=20000, duty = 0)
-# y = PWM(Pin(21), freq=20000, duty = 0)
-
-
-# Guarda a informacao se alguem tocou a campainha
-campainha = False
-
-# Contador de tempo para a campainha
-ini_tempo = 0
 
 #===============================================================
 # Conecta o ESP ao roteador, nao alterar
@@ -107,44 +88,13 @@ except Exception as e:
 # para que quando um dispositivo publicar uma mensagem em um
 # topico que seu ESP esteja inscrito, voce possa executar uma funcao.
 #===============================================================
-# isRunning = False
-# state = 0
 finite_state_machine = FSM_Robot()
 def cb(topic, msg):
-    # print('Received Data:  Topic = {}, Msg = {}'.format(topic, msg))            
     if topic == b'esp32/cmd_vel':
-        # print(msg.decode())
         twist = json.loads(msg.decode()) 
-        print(twist)
         finite_state_machine.update(twist['start'],twist['stop'],twist['robot_vel'],twist['robot_yaw'])
 
         
-
-
-        
-        # if state == 0:
-        #     print("Robot is turnoff")
-            
-        # if isRunning:
-        #     print("Robot is running")
-        #     if twist['start'] == 1:
-        #         print("Will stop the robot")
-        #         isRunning = False
-        #         robot.stopRobot()
-
-        # if twist['start'] == 1 and not isRunning:
-        #     isRunning = True
-        #     robot.startRobot()
-            
-                
-                
-        # print(isRunning)
-            
-        #y.value(1)
-        # g.duty(twist['robot_vel'])
-        # y.duty(twist['robot_vel'])
-        #print('x={0}'.format(joy['button']))
-
         
 
 
