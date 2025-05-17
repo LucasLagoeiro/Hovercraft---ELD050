@@ -13,7 +13,7 @@ class FSM_Robot(object):
 
     def __init__(self):
         self.state = robotOFF
-        self.robot = Motor(19,18,21)
+        self.robot = Motor(18,19,21)
         
 
     def update(self,start_btn,stop_btn,foward_btn,yaw_btn):
@@ -54,18 +54,21 @@ class FSM_Robot(object):
         elif self.state == goFoward:
             print("Robot is going foward")
             self.robot.goFoward(foward_btn)
-            self.state = robotON
+            if foward_btn == 0:
+                self.state = robotON
 
 
         elif self.state == turnLeft:
             print("Robot is turning left")
             self.robot.turnLeft(abs(yaw_btn))
-            self.state = robotON
+            if yaw_btn == 0:
+                self.state = robotON
 
         elif self.state == turnRight:
             print("Robot is turning right")
             self.robot.turnRight(abs(yaw_btn))
-            self.state = robotON
+            if yaw_btn == 0:
+                self.state = robotON
 
         elif self.state == turnOff:
             print("Robot is turning off")
@@ -73,6 +76,8 @@ class FSM_Robot(object):
             self.state = robotOFF
         
         print(self.state)
+
+
 
 
 

@@ -23,7 +23,7 @@ from fsm import FSM_Robot #Finite State Machine for the robot
 #===============================================================
 
 # Modifique os dados abaixo para a rede WiFi que o ESP deve se conectar
-WIFI_SSID     = 'llagoeiro'
+WIFI_SSID     = 'hover'
 WIFI_PASSWORD = 'makerobot'
 
 mqtt_client_id = bytes('cliente_'+'robot', 'utf-8') # um ID de cliente aleatorio
@@ -35,6 +35,9 @@ MQTT_IO_URL = '10.42.0.1'
 # Caso o servidor MQTT exija usuario e senha
 # MQTT_USERNAME   = 'usuario'
 # MQTT_IO_KEY     = 'senha'
+
+blue_led       = Pin(2, Pin.OUT) # Botao ligado ao pino D5
+
 
 #===============================================================
 # Conecta o ESP ao roteador, nao alterar
@@ -49,11 +52,15 @@ def connect_wifi():
         print('Conectando...')
         timeout = 0
         while (not wifi.isconnected() and timeout < 10):
+            blue_led.value(0)
             print(10 - timeout)
             timeout = timeout + 1
-            time.sleep(1) 
+            time.sleep(0.5)
+            blue_led.value(1)
+            time.sleep(0.5)
     if(wifi.isconnected()):
         print('Conectado')
+        blue_led.value(1)
     else:
         print('Nao conectado')
         sys.exit()
@@ -125,6 +132,8 @@ while True:
     except: # Caso a conexao for perdida
         client.disconnect()
         sys.exit()
+
+
 
 
 
