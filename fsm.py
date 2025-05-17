@@ -75,7 +75,10 @@ class FSM_Robot(object):
             self.robot.stopMotors()
             self.state = robotOFF
         
-        print(self.state)
+        # print(self.state)
+    
+    def feedback(self):
+        return self.state
 
 
 

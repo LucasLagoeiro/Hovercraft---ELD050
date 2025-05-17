@@ -3,6 +3,7 @@
     ~broker_ip_address: 10.42.0.1
     ~twist_sub_topic: /joy
     ~mqtt_pub_topic: esp32/cmd_vel
+    ~mqtt_sub_topic: esp32/feedback
 /teleop_twist_joy_node:
   ros__parameters:
     axis_linear.x: 1

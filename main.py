@@ -100,6 +100,9 @@ def cb(topic, msg):
     if topic == b'esp32/cmd_vel':
         twist = json.loads(msg.decode()) 
         finite_state_machine.update(twist['start'],twist['stop'],twist['robot_vel'],twist['robot_yaw'])
+        #print(finite_state_machine.feedback())
+        client.publish(b'esp32/feedback', str(finite_state_machine.feedback()))
+
 
         
         
@@ -132,6 +135,7 @@ while True:
     except: # Caso a conexao for perdida
         client.disconnect()
         sys.exit()
+
 
 
 
